@@ -11,14 +11,15 @@ public class LoginPage extends BasicPage {
         super(driver, wait);
     }
 
-    public WebElement getLanguagesButton(){
+    public WebElement getLanguagesButton() {
         return driver.findElement(By.cssSelector("button.btnLocaleActivation "));
     }
-    public WebElement getEnglishLanguageButton(){
+
+    public WebElement getEnglishLanguageButton() {
         return driver.findElement(By.cssSelector("div.btnEN"));
     }
 
-    public WebElement getLoginButton(){
+    public WebElement getLoginButton() {
         return driver.findElement(By.cssSelector("a.btnLogin"));
     }
 }

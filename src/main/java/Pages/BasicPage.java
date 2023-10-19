@@ -33,7 +33,8 @@ public abstract class BasicPage {
                 .scrollToElement(scrollToThis)
                 .perform();
     }
-    public String getUrl(){
+
+    public String getUrl() {
         return driver.getCurrentUrl();
     }
 }
