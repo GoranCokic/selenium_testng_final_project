@@ -1,6 +1,7 @@
 package tests;
 
 import Pages.LoginPage;
+import Pages.UrlPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -28,6 +29,7 @@ public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected LoginPage loginPage;
+    protected UrlPage urlPage;
 
     @BeforeClass
     public void beforeClass() {
@@ -37,6 +39,7 @@ public abstract class BasicTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
+        urlPage = new UrlPage(driver,wait);
     }
 
     @BeforeMethod
