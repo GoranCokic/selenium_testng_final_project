@@ -34,7 +34,5 @@ public abstract class BasicPage {
                 .perform();
     }
 
-    public String getUrl() {
-        return driver.getCurrentUrl();
-    }
+
 }
