@@ -22,4 +22,12 @@ public class LoginPage extends BasicPage {
     public WebElement getLoginButton() {
         return driver.findElement(By.cssSelector("a.btnLogin"));
     }
+
+    public WebElement getEmailInputField() {
+        return driver.findElement(By.xpath("//input[@type='email']"));
+    }
+
+    public WebElement getPasswordInputField() {
+        return driver.findElement(By.xpath("//input[@type='password']"));
+    }
 }

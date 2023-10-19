@@ -15,5 +15,14 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(loginPage.getUrl(), baseUrl + urlExtend,
                 "url should be ||| " + baseUrl + urlExtend + " ||| but is " + loginPage.getUrl());
     }
+
+    @Test(priority = 2, retryAnalyzer =  RetryTests.class)
+    public void checksInputTypes(){
+        loginPage.getLoginButton().click();
+        Assert.assertEquals(loginPage.getEmailInputField().getAttribute("type"),"email",
+                "Type attribute does not equal 'email' but it should");
+        Assert.assertEquals(loginPage.getPasswordInputField().getAttribute("type"),"password",
+                "Type attribute does not equal 'password' but it should");
+    }
 }
 
