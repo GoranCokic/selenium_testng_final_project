@@ -44,5 +44,23 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(loginPage.getUrl(), baseUrl + urlExtend,
                 "url should be ||| " + baseUrl + urlExtend + " ||| but is " + loginPage.getUrl());
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryTests.class)
+    public void displaysErrorsWhenPasswordIsWrong(){
+        String email = "admin@admin.com";
+        String password = "password123";
+        String urlExtend = "/login";
+        loginPage.getNavigationMenuLogin().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        wait
+                .withMessage("|||Login wrapper did not appear|||")
+                .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getLoginErrorWrapper()));
+        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password",
+                "Error message should be 'User does not exists' but isn't");
+        Assert.assertEquals(loginPage.getUrl(), baseUrl + urlExtend,
+                "url should be ||| " + baseUrl + urlExtend + " ||| but is " + loginPage.getUrl());
+    }
 }
 

@@ -38,6 +38,6 @@ public class LoginPage extends BasicPage {
         return By.cssSelector("div.error");
     }
     public String getErrorMessage(){
-        return driver.findElement(By.xpath("//li[text()='User does not exists']")).getText();
+        return driver.findElement(By.cssSelector("div.error li")).getText();
     }
 }
