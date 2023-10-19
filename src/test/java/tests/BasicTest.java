@@ -1,5 +1,6 @@
 package tests;
 
+import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.UrlPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -30,6 +31,7 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected LoginPage loginPage;
     protected UrlPage urlPage;
+    protected HomePage homePage;
 
     @BeforeClass
     public void beforeClass() {
@@ -39,7 +41,8 @@ public abstract class BasicTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
-        urlPage = new UrlPage(driver,wait);
+        urlPage = new UrlPage(driver, wait);
+        homePage = new HomePage(driver, wait);
     }
 
     @BeforeMethod

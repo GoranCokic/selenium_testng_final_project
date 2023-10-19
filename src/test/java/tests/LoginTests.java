@@ -75,5 +75,21 @@ public class LoginTests extends BasicTest {
                 .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
                 .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
     }
+
+    @Test(priority = 6, retryAnalyzer = RetryTests.class)
+    public void logout() {
+        String email = "admin@admin.com";
+        String password = "12345";
+        String urlExtend = "/home";
+        loginPage.getNavigationMenuLogin().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        wait
+                .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
+        homePage.getLogoutButton().isDisplayed();
+        homePage.getLogoutButton().click();
+    }
 }
 
