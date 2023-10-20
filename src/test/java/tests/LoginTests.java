@@ -36,7 +36,7 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         wait
-                .withMessage("|||Login wrapper did not appear|||")
+                .withMessage("|||Error wrapper did not appear|||")
                 .until(ExpectedConditions.visibilityOfElementLocated(messagePopUpPage.getLoginErrorWrapper()));
         Assert.assertEquals(messagePopUpPage.getErrorMessage(), "User does not exists",
                 "Error message should be 'User does not exists' but isn't");
@@ -54,7 +54,7 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         wait
-                .withMessage("|||Login wrapper did not appear|||")
+                .withMessage("|||Error wrapper did not appear|||")
                 .until(ExpectedConditions.visibilityOfElementLocated(messagePopUpPage.getLoginErrorWrapper()));
         Assert.assertEquals(messagePopUpPage.getErrorMessage(), "Wrong password",
                 "Error message should be 'User does not exists' but isn't");
