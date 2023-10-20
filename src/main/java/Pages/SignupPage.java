@@ -11,6 +11,10 @@ public class SignupPage extends BasicPage {
         super(driver, wait);
     }
 
+    public WebElement getNameInputField() {
+        return driver.findElement(By.cssSelector("#name"));
+    }
+
     public WebElement getEmailInputField() {
         return driver.findElement(By.cssSelector("#email"));
     }
@@ -21,5 +25,9 @@ public class SignupPage extends BasicPage {
 
     public WebElement getConfirmPasswordInputField() {
         return driver.findElement(By.cssSelector("#confirmPassword"));
+    }
+
+    public WebElement getSignMeUpButton() {
+        return driver.findElement(By.cssSelector("button[type='submit']"));
     }
 }
