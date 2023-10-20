@@ -19,10 +19,14 @@ public class NavPage extends BasicPage {
     }
 
     public WebElement getNavigationMenuLogin() {
-        return driver.findElement(By.cssSelector("a.btnLogin"));
+        return driver.findElement(By.cssSelector("div.v-toolbar__items :nth-child(3)"));
     }
 
     public WebElement getLogoutButton() {
         return driver.findElement(By.cssSelector("button.btnLogout "));
+    }
+
+    public WebElement getSignupButton() {
+        return driver.findElement(By.cssSelector("div.v-toolbar__items :nth-child(4)"));
     }
 }

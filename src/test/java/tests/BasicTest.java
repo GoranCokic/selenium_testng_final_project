@@ -1,9 +1,6 @@
 package tests;
 
-import Pages.MessagePopUpPage;
-import Pages.NavPage;
-import Pages.LoginPage;
-import Pages.UrlPage;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -34,6 +31,7 @@ public abstract class BasicTest {
     protected UrlPage urlPage;
     protected NavPage navPage;
     protected MessagePopUpPage messagePopUpPage;
+    protected SignupPage signupPage;
 
     @BeforeClass
     public void beforeClass() {
@@ -46,6 +44,7 @@ public abstract class BasicTest {
         urlPage = new UrlPage(driver, wait);
         navPage = new NavPage(driver, wait);
         messagePopUpPage = new MessagePopUpPage(driver, wait);
+        signupPage = new SignupPage(driver, wait);
     }
 
     @BeforeMethod
