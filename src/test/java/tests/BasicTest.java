@@ -1,6 +1,7 @@
 package tests;
 
-import Pages.HomePage;
+import Pages.MessagePopUpPage;
+import Pages.NavPage;
 import Pages.LoginPage;
 import Pages.UrlPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -31,7 +32,8 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected LoginPage loginPage;
     protected UrlPage urlPage;
-    protected HomePage homePage;
+    protected NavPage navPage;
+    protected MessagePopUpPage messagePopUpPage;
 
     @BeforeClass
     public void beforeClass() {
@@ -42,7 +44,8 @@ public abstract class BasicTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
         urlPage = new UrlPage(driver, wait);
-        homePage = new HomePage(driver, wait);
+        navPage = new NavPage(driver, wait);
+        messagePopUpPage = new MessagePopUpPage(driver, wait);
     }
 
     @BeforeMethod
@@ -62,7 +65,7 @@ public abstract class BasicTest {
             Files.copy(f, new File(strPath));
         }
         driver.manage().deleteAllCookies();
-        ((JavascriptExecutor) (driver)).executeScript(String.format("window.localStorage.removeItem('%s');", "cart-contents"));
+        ((JavascriptExecutor) (driver)).executeScript(String.format("window.localStorage.removeItem('%s');", "token"));
     }
 
     @AfterClass

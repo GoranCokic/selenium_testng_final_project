@@ -9,9 +9,9 @@ public class LoginTests extends BasicTest {
 
     @Test(priority = 1, retryAnalyzer = RetryTests.class)
     public void visitsTheLoginPage() {
-        loginPage.getLanguagesButton().click();
-        loginPage.getEnglishLanguageButton().click();
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getLanguagesButton().click();
+        navPage.getEnglishLanguageButton().click();
+        navPage.getNavigationMenuLogin().click();
         String urlExtend = "/login";
         Assert.assertEquals(urlPage.getUrl(), baseUrl + urlExtend,
                 "url should be ||| " + baseUrl + urlExtend + " ||| but is " + urlPage.getUrl());
@@ -19,7 +19,7 @@ public class LoginTests extends BasicTest {
 
     @Test(priority = 2, retryAnalyzer = RetryTests.class)
     public void checksInputTypes() {
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getNavigationMenuLogin().click();
         Assert.assertEquals(loginPage.getEmailInputField().getAttribute("type"), "email",
                 "Type attribute does not equal 'email' but it should");
         Assert.assertEquals(loginPage.getPasswordInputField().getAttribute("type"), "password",
@@ -31,14 +31,14 @@ public class LoginTests extends BasicTest {
         String email = "non-existing-user@gmal.com";
         String password = "password123";
         String urlExtend = "/login";
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getNavigationMenuLogin().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         wait
                 .withMessage("|||Login wrapper did not appear|||")
-                .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getLoginErrorWrapper()));
-        Assert.assertEquals(loginPage.getErrorMessage(), "User does not exists",
+                .until(ExpectedConditions.visibilityOfElementLocated(messagePopUpPage.getLoginErrorWrapper()));
+        Assert.assertEquals(messagePopUpPage.getErrorMessage(), "User does not exists",
                 "Error message should be 'User does not exists' but isn't");
         Assert.assertEquals(urlPage.getUrl(), baseUrl + urlExtend,
                 "url should be ||| " + baseUrl + urlExtend + " ||| but is " + urlPage.getUrl());
@@ -49,14 +49,14 @@ public class LoginTests extends BasicTest {
         String email = "admin@admin.com";
         String password = "password123";
         String urlExtend = "/login";
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getNavigationMenuLogin().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         wait
                 .withMessage("|||Login wrapper did not appear|||")
-                .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getLoginErrorWrapper()));
-        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password",
+                .until(ExpectedConditions.visibilityOfElementLocated(messagePopUpPage.getLoginErrorWrapper()));
+        Assert.assertEquals(messagePopUpPage.getErrorMessage(), "Wrong password",
                 "Error message should be 'User does not exists' but isn't");
         Assert.assertEquals(urlPage.getUrl(), baseUrl + urlExtend,
                 "url should be ||| " + baseUrl + urlExtend + " ||| but is " + urlPage.getUrl());
@@ -67,7 +67,7 @@ public class LoginTests extends BasicTest {
         String email = "admin@admin.com";
         String password = "12345";
         String urlExtend = "/home";
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getNavigationMenuLogin().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
@@ -81,15 +81,15 @@ public class LoginTests extends BasicTest {
         String email = "admin@admin.com";
         String password = "12345";
         String urlExtend = "/home";
-        loginPage.getNavigationMenuLogin().click();
+        navPage.getNavigationMenuLogin().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         wait
                 .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
                 .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
-        homePage.getLogoutButton().isDisplayed();
-        homePage.getLogoutButton().click();
+        navPage.getLogoutButton().isDisplayed();
+        navPage.getLogoutButton().click();
     }
 }
 

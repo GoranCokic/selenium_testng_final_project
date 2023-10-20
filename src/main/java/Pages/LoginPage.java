@@ -11,18 +11,6 @@ public class LoginPage extends BasicPage {
         super(driver, wait);
     }
 
-    public WebElement getLanguagesButton() {
-        return driver.findElement(By.cssSelector("button.btnLocaleActivation "));
-    }
-
-    public WebElement getEnglishLanguageButton() {
-        return driver.findElement(By.cssSelector("div.btnEN"));
-    }
-
-    public WebElement getNavigationMenuLogin() {
-        return driver.findElement(By.cssSelector("a.btnLogin"));
-    }
-
     public WebElement getEmailInputField() {
         return driver.findElement(By.xpath("//input[@type='email']"));
     }
@@ -31,13 +19,7 @@ public class LoginPage extends BasicPage {
         return driver.findElement(By.xpath("//input[@type='password']"));
     }
 
-    public WebElement getLoginButton(){
+    public WebElement getLoginButton() {
         return driver.findElement(By.xpath("//button[@type='submit']"));
-    }
-    public By getLoginErrorWrapper(){
-        return By.cssSelector("div.error");
-    }
-    public String getErrorMessage(){
-        return driver.findElement(By.cssSelector("div.error li")).getText();
     }
 }
