@@ -56,4 +56,31 @@ public class SignupTests extends BasicTest {
                 .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
                 .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryTests.class)
+    public void signup() {
+        String name = "New User2";
+        String email = "newuser2@admin.com";
+        String password = "123456";
+        String confirmPassword = "123456";
+        String urlExtend = "/signup";
+        navPage.getSignupButton().click();
+        wait
+                .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
+        signupPage.getNameInputField().sendKeys(name);
+        signupPage.getEmailInputField().sendKeys(email);
+        signupPage.getPasswordInputField().sendKeys(password);
+        signupPage.getConfirmPasswordInputField().sendKeys(confirmPassword);
+        signupPage.getSignMeUpButton().click();
+
+        urlExtend = "/home";
+        wait
+                .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
+        urlPage.refreshPage();
+        messagePopUpPage.getVerifyYourAccountMsg().isDisplayed();
+        signupPage.getClosePopupMsgButton().click();
+        navPage.getLogoutButton().click();
+    }
 }

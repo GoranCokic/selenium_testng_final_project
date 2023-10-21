@@ -30,4 +30,8 @@ public class SignupPage extends BasicPage {
     public WebElement getSignMeUpButton() {
         return driver.findElement(By.cssSelector("button[type='submit']"));
     }
+
+    public WebElement getClosePopupMsgButton() {
+        return driver.findElement(By.cssSelector("button.btnClose "));
+    }
 }

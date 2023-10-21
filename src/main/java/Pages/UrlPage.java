@@ -11,4 +11,8 @@ public class UrlPage extends BasicPage {
     public String getUrl() {
         return driver.getCurrentUrl();
     }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
 }

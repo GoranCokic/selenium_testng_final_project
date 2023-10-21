@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MessagePopUpPage extends BasicPage {
@@ -15,5 +16,9 @@ public class MessagePopUpPage extends BasicPage {
 
     public String getErrorMessage() {
         return driver.findElement(By.cssSelector("div.error li")).getText();
+    }
+
+    public WebElement getVerifyYourAccountMsg() {
+        return driver.findElement(By.xpath("//div[text()=' IMPORTANT: Verify your account ']"));
     }
 }
