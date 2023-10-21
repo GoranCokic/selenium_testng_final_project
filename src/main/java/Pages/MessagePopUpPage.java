@@ -21,4 +21,6 @@ public class MessagePopUpPage extends BasicPage {
     public WebElement getVerifyYourAccountMsg() {
         return driver.findElement(By.xpath("//div[text()=' IMPORTANT: Verify your account ']"));
     }
+
+
 }
