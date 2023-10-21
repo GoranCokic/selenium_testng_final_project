@@ -29,4 +29,12 @@ public class NavPage extends BasicPage {
     public WebElement getSignupButton() {
         return driver.findElement(By.cssSelector("div.v-toolbar__items :nth-child(4)"));
     }
+
+    public WebElement getAdminButton() {
+        return driver.findElement(By.cssSelector("button.btnAdmin"));
+    }
+
+    public WebElement getAdminDropdownCitiesButton() {
+        return driver.findElement(By.cssSelector("a.btnAdminCities"));
+    }
 }
