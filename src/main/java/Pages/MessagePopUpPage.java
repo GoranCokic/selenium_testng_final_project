@@ -22,7 +22,15 @@ public class MessagePopUpPage extends BasicPage {
         return driver.findElement(By.xpath("//div[text()=' IMPORTANT: Verify your account ']"));
     }
 
-    public By getSuccessfulAddedCityPopupMsg() {
+    public By getSuccessfulAddedOrEditedCityPopupText() {
         return By.xpath("//div[text()=' Saved successfully ']");
+    }
+
+    public By getNewOrEditCityPopupMsg() {
+        return By.cssSelector("div.dlgNewEditItem ");
+    }
+
+    public WebElement getSuccessfulEditedCityPopupMsg() {
+        return driver.findElement(By.cssSelector("div.success"));
     }
 }
