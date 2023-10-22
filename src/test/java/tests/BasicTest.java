@@ -33,6 +33,8 @@ public abstract class BasicTest {
     protected MessagePopUpPage messagePopUpPage;
     protected SignupPage signupPage;
     protected CitiesPage citiesPage;
+    protected FakerHelper fakerHelper;
+    protected String generatedUsername;
 
     @BeforeClass
     public void beforeClass() {
@@ -47,6 +49,8 @@ public abstract class BasicTest {
         messagePopUpPage = new MessagePopUpPage(driver, wait);
         signupPage = new SignupPage(driver, wait);
         citiesPage = new CitiesPage(driver, wait);
+        fakerHelper = new FakerHelper();
+        generatedUsername = fakerHelper.generateUserName();
     }
 
     @BeforeMethod

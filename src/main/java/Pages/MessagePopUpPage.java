@@ -22,5 +22,7 @@ public class MessagePopUpPage extends BasicPage {
         return driver.findElement(By.xpath("//div[text()=' IMPORTANT: Verify your account ']"));
     }
 
-
+    public By getSuccessfulAddedCityPopupMsg() {
+        return By.xpath("//div[text()=' Saved successfully ']");
+    }
 }

@@ -21,4 +21,8 @@ public class CitiesPage extends BasicPage {
     public WebElement getNewItemInputField() {
         return driver.findElement(By.cssSelector("input#name"));
     }
+
+    public WebElement getNewItemSaveButton() {
+        return driver.findElement(By.cssSelector("button.btnSave "));
+    }
 }
