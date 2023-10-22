@@ -14,15 +14,23 @@ public class CitiesPage extends BasicPage {
         return driver.findElement(By.cssSelector("button.btnNewItem "));
     }
 
-    public By getDialogForCreatingOrEditingCities() {
-        return By.cssSelector("div.dlgNewEditItem ");
-    }
-
-    public WebElement getNewItemInputField() {
+    public WebElement getNewOrEditItemInputField() {
         return driver.findElement(By.cssSelector("input#name"));
     }
 
-    public WebElement getNewItemSaveButton() {
+    public WebElement getNewOrEditItemSaveButton() {
         return driver.findElement(By.cssSelector("button.btnSave "));
+    }
+
+    public WebElement getCitySearchInputField() {
+        return driver.findElement(By.cssSelector("input#search"));
+    }
+
+    public WebElement getEditCityButton() {
+        return driver.findElement(By.cssSelector("button#edit"));
+    }
+
+    public By getNumberOfCityTableRows() {
+        return By.cssSelector("tbody tr");
     }
 }
