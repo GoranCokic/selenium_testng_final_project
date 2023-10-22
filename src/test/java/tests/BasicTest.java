@@ -35,6 +35,9 @@ public abstract class BasicTest {
     protected CitiesPage citiesPage;
     protected FakerHelper fakerHelper;
     protected String generatedUsername;
+    protected String newUsername;
+    protected String oldCityName;
+    protected String newCityName;
 
     @BeforeClass
     public void beforeClass() {

@@ -33,4 +33,7 @@ public class CitiesPage extends BasicPage {
     public By getNumberOfCityTableRows() {
         return By.cssSelector("tbody tr");
     }
+    public WebElement getCityNameFromNameColumn(){
+        return driver.findElement(By.xpath("//tbody//tr//td[2]"));
+    }
 }

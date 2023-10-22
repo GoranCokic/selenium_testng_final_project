@@ -92,8 +92,9 @@ public class AdminCitiesTests extends BasicTest {
 
     @Test(priority = 4, retryAnalyzer = RetryTests.class)
     public void editCity() {
-        String oldCityName = generatedUsername + "'s City";
-        String newCityName = fakerHelper.generateUserName() + "'s City";
+        oldCityName = generatedUsername + "'s City";
+        newUsername = fakerHelper.generateUserName();
+        newCityName = newUsername + "'s City Edited";
 
         String email = "admin@admin.com";
         String password = "12345";
@@ -134,5 +135,32 @@ public class AdminCitiesTests extends BasicTest {
         wait
                 .withMessage("Message should be displayed but it isn't")
                 .until(ExpectedConditions.presenceOfElementLocated(messagePopUpPage.getSuccessfulAddedOrEditedCityPopupText()));
+    }
+
+    @Test(priority = 5, retryAnalyzer = RetryTests.class)
+    public void searchCity() {
+        String email = "admin@admin.com";
+        String password = "12345";
+        String urlExtend = "/home";
+        navPage.getNavigationMenuLogin().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        wait
+                .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
+        navPage.getAdminButton().click();
+        navPage.getAdminDropdownCitiesButton().click();
+
+        citiesPage.getCitySearchInputField().sendKeys(newCityName);
+
+        wait
+                .withMessage("|||Number of displayed cities should be 1 bit it isn't|||")
+                .until(ExpectedConditions.numberOfElementsToBe(citiesPage.getNumberOfCityTableRows(), 1));
+
+        Assert.assertEquals(citiesPage.getCityNameFromNameColumn().getText(),
+                newCityName,
+                "The text from the search field does not match the city name from the name column");
+
     }
 }
