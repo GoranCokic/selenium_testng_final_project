@@ -123,7 +123,7 @@ public class AdminCitiesTests extends BasicTest {
                 .until(ExpectedConditions.presenceOfElementLocated(messagePopUpPage.getNewOrEditCityPopupMsg()));
 
         //this clears the element because .clear() selenium function isn't working for some reason
-        citiesPage.getNewOrEditItemInputField().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+        citiesPage.getNewOrEditItemInputField().sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         citiesPage.getNewOrEditItemInputField().sendKeys(newCityName);
         citiesPage.getNewOrEditItemSaveButton().click();
 
@@ -161,6 +161,5 @@ public class AdminCitiesTests extends BasicTest {
         Assert.assertEquals(citiesPage.getCityNameFromNameColumn().getText(),
                 newCityName,
                 "The text from the search field does not match the city name from the name column");
-
     }
 }
