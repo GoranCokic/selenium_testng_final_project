@@ -59,8 +59,8 @@ public class SignupTests extends BasicTest {
 
     @Test(priority = 4, retryAnalyzer = RetryTests.class)
     public void signup() {
-        String name = "New User2";
-        String email = "newuser2@admin.com";
+        String name = generatedUsername;
+        String email = name + "@admin.com";
         String password = "123456";
         String confirmPassword = "123456";
         String urlExtend = "/signup";
