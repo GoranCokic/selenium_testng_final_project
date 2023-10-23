@@ -37,4 +37,8 @@ public class CitiesPage extends BasicPage {
     public WebElement getCityNameFromNameColumn() {
         return driver.findElement(By.xpath("//tbody//tr//td[2]"));
     }
+
+    public WebElement getDeleteButton() {
+        return driver.findElement(By.cssSelector("button#delete"));
+    }
 }

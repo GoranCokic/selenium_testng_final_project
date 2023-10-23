@@ -162,4 +162,47 @@ public class AdminCitiesTests extends BasicTest {
                 newCityName,
                 "The text from the search field does not match the city name from the name column");
     }
+
+    @Test(priority = 6, retryAnalyzer = RetryTests.class)
+    public void deleteCity() {
+        String email = "admin@admin.com";
+        String password = "12345";
+        String urlExtend = "/home";
+        navPage.getNavigationMenuLogin().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        wait
+                .withMessage("|||Wrong URL, should be" + baseUrl + urlExtend + "but is " + urlPage.getUrl() + "|||")
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtend));
+        navPage.getAdminButton().click();
+        navPage.getAdminDropdownCitiesButton().click();
+
+        citiesPage.getCitySearchInputField().sendKeys(newCityName);
+
+        wait
+                .withMessage("|||Number of displayed cities should be 1 bit it isn't|||")
+                .until(ExpectedConditions.numberOfElementsToBe(citiesPage.getNumberOfCityTableRows(), 1));
+
+        Assert.assertEquals(citiesPage.getCityNameFromNameColumn().getText(),
+                newCityName,
+                "The text from the search field does not match the city name from the name column");
+
+        citiesPage.getDeleteButton().click();
+
+        wait
+                .withMessage("|||Delete popup wrapper does not appear but it should|||")
+                .until(ExpectedConditions.visibilityOf(messagePopUpPage.getDeletePopupWrapper()));
+
+        wait
+                .withMessage("|||Delete button in the delete popup wrapper does not appear but it should|||")
+                .until(ExpectedConditions.visibilityOf(messagePopUpPage.getDeletePopupDeleteButton()));
+
+        messagePopUpPage.getDeletePopupDeleteButton().click();
+
+        wait
+                .withMessage("|||Text ' Deleted successfully ' does not appear in the popup message but it should")
+                .until(ExpectedConditions.textToBePresentInElement(messagePopUpPage.getSuccessfulDeletePopupMsg(),
+                        "Deleted successfully"));
+    }
 }

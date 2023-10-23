@@ -33,4 +33,16 @@ public class MessagePopUpPage extends BasicPage {
     public WebElement getSuccessfulEditedCityPopupMsg() {
         return driver.findElement(By.cssSelector("div.success"));
     }
+
+    public WebElement getDeletePopupWrapper() {
+        return driver.findElement(By.cssSelector("div.v-dialog__content--active > div >div"));
+    }
+
+    public WebElement getDeletePopupDeleteButton() {
+        return driver.findElement(By.cssSelector("button.red--text"));
+    }
+
+    public WebElement getSuccessfulDeletePopupMsg() {
+        return driver.findElement(By.cssSelector("div.success > div.v-snack__content"));
+    }
 }
