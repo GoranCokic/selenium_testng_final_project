@@ -25,4 +25,14 @@ public class AuthRoutesTests extends BasicTest {
                 .withMessage("|||Url should be" + baseUrl + urlExtendCorrect + " but is " + baseUrl + urlExtendWrong)
                 .until(ExpectedConditions.urlToBe(baseUrl + urlExtendCorrect));
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryTests.class)
+    public void forbidsVisitsToAdminCitiesUrlIfNotAuthenticated() {
+        String urlExtendWrong ="/admin/cities";
+        String urlExtendCorrect = "/login";
+        driver.navigate().to(baseUrl + urlExtendWrong);
+        wait
+                .withMessage("|||Url should be" + baseUrl + urlExtendCorrect + " but is " + baseUrl + urlExtendWrong)
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtendCorrect));
+    }
 }
