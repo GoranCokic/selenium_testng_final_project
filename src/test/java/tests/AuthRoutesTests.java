@@ -15,4 +15,14 @@ public class AuthRoutesTests extends BasicTest {
                 .withMessage("|||Url should be" + baseUrl + urlExtendCorrect + " but is " + baseUrl + urlExtendWrong)
                 .until(ExpectedConditions.urlToBe(baseUrl + urlExtendCorrect));
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryTests.class)
+    public void forbidsVisitsToProfileUrlIfNotAuthenticated() {
+        String urlExtendWrong ="/profile";
+        String urlExtendCorrect = "/login";
+        driver.navigate().to(baseUrl + urlExtendWrong);
+        wait
+                .withMessage("|||Url should be" + baseUrl + urlExtendCorrect + " but is " + baseUrl + urlExtendWrong)
+                .until(ExpectedConditions.urlToBe(baseUrl + urlExtendCorrect));
+    }
 }
